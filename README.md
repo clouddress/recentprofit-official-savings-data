@@ -4,12 +4,16 @@ This repository contains a point-in-time dataset of U.S. savings, promo-code ava
 
 The human-readable pages that correspond to this snapshot are maintained by [RecentProfit](https://recentprofit.com).
 
+- Author: RecentProfit
+- License: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)
+
 ## Files
 
 - `data/official-brand-savings.csv` — one row per official-source offer or policy.
 - `data/official-brand-savings.json` — the same snapshot grouped by brand.
 - `BRANDS.md` — a compact brand-by-brand index.
 - `scripts/check-sources.mjs` — checks whether each cited official URL still responds.
+- `assets/recentprofit-avatar.png` — shared profile image for published dataset records.
 
 ## Snapshot
 
