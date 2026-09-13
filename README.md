@@ -1,42 +1,40 @@
-# Official Brand Savings Data
+# RecentProfit Data Research v1.0
 
-This repository contains a point-in-time dataset of U.S. savings, promo-code availability, shipping terms, return policies, and eligibility-based discounts found on brand-owned websites.
-
-The human-readable pages that correspond to this snapshot are maintained by [RecentProfit](https://recentprofit.com).
+This repository packages RecentProfit's U.S. brand purchase-condition research as fact-level and comparison datasets. The canonical human-readable documentation, methodology, source links, and version history are on [RecentProfit Data Research](https://recentprofit.com/data-research).
 
 - Author: RecentProfit
-- License: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)
+- Schema version: v1.0
+- Data version: 2026-09-13
+- Region / currency: US / USD
+- Brands: 33
+- Current fact rows: 212
+- License: [MIT](LICENSE)
 
-## Files
+## Data files
 
-- `data/official-brand-savings.csv` — one row per official-source offer or policy.
-- `data/official-brand-savings.json` — the same snapshot grouped by brand.
-- `BRANDS.md` — a compact brand-by-brand index.
-- `scripts/check-sources.mjs` — checks whether each cited official URL still responds.
-- `assets/recentprofit-avatar.png` — shared profile image for published dataset records.
+- `data/recentprofit-brand-facts.csv` — fact-level long table with one row per brand fact.
+- `data/recentprofit-brand-facts.json` — fact-level JSON with dataset metadata, field definitions, controlled vocabulary, and fact records.
+- `data/recentprofit-brand-comparison.csv` — comparison / wide table with one row per brand and fact-specific value and status columns.
+- `data/recentprofit-brand-comparison.json` — comparison / wide JSON with dataset metadata, controlled vocabulary, fact names, and brand records.
 
-## Snapshot
+`README.md` documents the package and `LICENSE` contains the MIT license text.
 
-- Verified date: 2026-09-12
-- Brands: 20
-- Official-source records: 49
-- Brands with a directly displayed public code: 2
+## Citation guidance
 
-This is a dated research snapshot, not a promise that an offer remains available. Always review the cited brand-owned page and checkout terms before relying on a discount.
+When citing a fact, include the dataset name, data version, brand, fact name, and the linked official source. Do not imply that a historical fact is current.
 
-## Method
+Suggested format:
 
-1. Include only brand-owned U.S. pages or official brand support pages.
-2. Record the offer, qualification conditions, source URL, and verification date.
-3. Leave the public-code field empty unless the official page directly displays the code.
-4. Do not use third-party coupon sites, forums, or community reposts as evidence.
+> RecentProfit. “RecentProfit Data Asset v1.0.” Data version 2026-09-13. Brand: `<brand_name>`. Fact: `<fact_name>`. Official source: `<official_source>`. https://recentprofit.com/data-research
 
-## Check source availability
+## Scope and method
 
-Requires Node.js 20 or newer.
+The fact-level files retain the brand, region, currency, fact name, value, supporting quote, official source, validity dates, review dates, change information, and fetch status. The comparison files reshape current facts into one record per brand for cross-brand analysis.
 
-```sh
-node scripts/check-sources.mjs
-```
+Facts come from published RecentProfit Brand Pages and their reviewed official brand sources. Third-party coupon sites are excluded. Missing policies do not create fact rows, and unverified or not-applicable statuses are not treated as ordinary fact values.
 
-The checker reports successful responses, redirects, access-restricted responses, and apparent failures. A restricted response such as HTTP 403 or 429 is reported separately because it does not prove that a page has disappeared.
+This is a dated research snapshot, not a promise that an offer remains available. Review the cited official source before relying on a discount or policy.
+
+## License
+
+Dataset structure and RecentProfit-authored summaries are released under the [MIT License](LICENSE). Brand names and official-source content remain the property of their respective owners.
